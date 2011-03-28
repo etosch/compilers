@@ -1,0 +1,9 @@
+<declaration> ::= name <id> <input-declaration> <output-declaration> <body> | name <id> <input-declaration> <body>
+<input-declaration> ::= input: <list>
+<output-declaration> ::= output: <list>
+<list> ::= <item> | <item> , <list>
+<item> ::= <id> | <assignment>
+<body> ::= <list> | <circuit>
+<assignment> ::= <id> <- <circuit> 
+<argument> ::= <id> | <circuit>
+<circuit> ::= <id>(<argument>) | <id>(<argument>,<argument>)

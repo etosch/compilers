@@ -1,0 +1,72 @@
+package circuit;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+import javax.swing.event.*;
+
+public class Pallet extends JApplet {
+    
+    public JTextArea textEditor;
+    public JPanel componentLibrary;
+
+
+    public static JMenuBar makeMenuBar(){
+	JMenuBar menuBar = new JMenuBar();
+	//add to bar
+	JButton documentation = new JButton("Language Specification");
+	documentation.addActionListener(new ActionListener(){
+		public void actionPerformed(ActionEvent e){
+		    String specs = "", line = "", failure = "";
+		    try{
+			BufferedReader br = new BufferedReader(new FileReader("langspec.txt"));
+			while ((line = br.readLine())!=null)
+			    specs+=line;
+			br.close();
+		    }catch(Exception ex){
+			failure=ex.toString();
+		    }
+		    JOptionPane.showMessageDialog(new JFrame(),specs.equals("")?failure:specs);
+		}
+	    });
+	menuBar.add(documentation);
+	JButton compile = new JButton("Compile");
+	menuBar.add(compile);
+	JButton reset = new JButton("Reset");
+	menuBar.add(reset);
+	JButton save = new JButton("Save");
+	// save.addActionListener(new ActionListener(){
+	// 	public void actionPerformed(ActionEvent e){
+	menuBar.add(save);
+	return menuBar;
+    }
+    
+    public void init(){
+	try{
+	    SwingUtilities.invokeAndWait(new Runnable(){
+		    public void run(){
+			JTabbedPane leftSide = new JTabbedPane();
+			textEditor = new JTextArea();	      
+			textEditor.setFont(new Font("Monospaced", 1, 14));
+			leftSide.addTab("Text Editor", textEditor);
+			componentLibrary = new JPanel();
+			leftSide.addTab("Component Library", componentLibrary);
+			JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT
+							      , leftSide
+							      , new JPanel());
+			splitPane.setOneTouchExpandable(true);
+			splitPane.setDividerLocation(384);
+			splitPane.setBorder(BorderFactory.createLineBorder(Color.black));
+			setContentPane(splitPane);
+			setJMenuBar(makeMenuBar());			
+		    }
+		});
+	} catch (Exception e) {
+	    System.err.println(e.toString());
+	}		
+	    
+    }
+
+}

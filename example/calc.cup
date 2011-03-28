@@ -1,0 +1,25 @@
+import java_cup.runtime.*;
+
+/* set up and use scanner */
+init with {: scanner.init(); :};
+scan with {: return scanner.next_token(); :}
+
+/* Terminals */
+terminal PLUS, TIMES, LPAREN, RPAREN, MINUS, DIVIDE, POWER, POINT;
+terminal Integer DIGIT;
+
+/* Non-terminals */
+non terminal E, OP;
+
+/* Precedences */
+precedence left TIMES, PLUS;
+
+/* Simple Grammar */
+E ::= E OP E | LPAREN E RPAREN | NUMBER
+NUMBER ::= NUMBER POINT NUMBER | DIGIT
+OP ::= PLUS | MINUS | TIMES | DIVIDE | POWER
+DIGIT ::= 0 |1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+;
+
+
+

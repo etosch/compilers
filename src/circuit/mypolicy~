@@ -1,0 +1,7 @@
+keystore "mykey";
+
+grant SignedBy "mykey"{
+      permission java.util.PropertyPermission "user.dir" "read";		
+      permission java.io.FilePermission "${user.dir}${/}langspec.txt", "read";
+      permission java.io.FilePermission "${user.dir}${/}code", "read,write";
+};

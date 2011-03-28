@@ -1,0 +1,6 @@
+keystore "compilers";
+
+grant SignedBy "mykey"{
+      permission java.io.FilePermission "${user.dir}${/}langspec.txt", "read";
+      permission java.io.FilePermission "${user.dir}${/}user", "read,write";
+};

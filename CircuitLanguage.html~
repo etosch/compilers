@@ -1,0 +1,13 @@
+<head>
+<body>
+  <script type="text/javascript">
+    <!-- document.write("<applet code=circuit.Pallet.class archive=\"CircuitLanguage.jar\" height=\""  -->
+    <!-- 			    + window.innerHeight*.97 +"\" width=\"" -->
+    <!-- 			    + window.innerWidth*.97 +"\" />"); -->
+    document.write("<applet code=circuit.Pallet.class height=\"" 
+			    + window.innerHeight*.97 +"\" width=\""
+			    + window.innerWidth*.97 +"\" />");
+
+  </script>
+</body>
+</html>

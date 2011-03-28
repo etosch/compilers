@@ -1,0 +1,5 @@
+package circuit.compiler.lexer;
+public class Tag{
+    public static final int
+	NAME = 256, INPUT = 257, OUTPUT = 258, ASSIGN = 259;
+}

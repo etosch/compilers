@@ -1,0 +1,3 @@
+name NAND
+input: A,B
+NOT(AND(A,B))

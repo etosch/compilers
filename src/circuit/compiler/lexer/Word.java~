@@ -1,0 +1,6 @@
+package circuit.compiler.lexer;
+public class Word extends Token{
+    public String lexeme = "";
+    public Word(Stirng s, int tag) { super(tag); lexeme=s;}
+    public static final Word sssign = new Word("<-", Tag.ASSIGN);
+}

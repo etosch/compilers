@@ -1,0 +1,5 @@
+name SR
+input: R,E,S
+output: Q, Q'
+Q <- NOR(AND(R,E), Q')
+Q' <- NOR(AND(E,S), Q)
