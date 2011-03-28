@@ -1,0 +1,7 @@
+package user.target;
+
+public class Source{
+
+    int voltage;
+
+}

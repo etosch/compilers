@@ -1,0 +1,21 @@
+package user.target;
+
+public abstract class Component extends LegalCircuitPiece{
+
+    abstract Component();
+
+    /**
+       @param from
+       @param to
+       Components connect from other components or from batteries to
+       other components.
+       Components can be Gates, Resistors, Capacitors, Output, etc.
+       Some components may be connected to more than one thing.
+       @return boolean indicating whether the component has successfully connected.
+     */
+    abstract boolean connect(Component from, Component to);
+
+    abstract boolean connect(Source from, Component to);
+
+
+}

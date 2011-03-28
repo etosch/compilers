@@ -1,0 +1,11 @@
+package user.target;
+
+public class Source{
+
+    private int voltage;
+
+    public setVoltage(int v){
+	this.voltage=v;
+    }
+
+}
