@@ -1,0 +1,51 @@
+package lang;
+
+public class Not extends Gate{
+
+    public Not(){
+	super();
+	inputs=new LegalCircuitPiece[1];
+	setIcon("../Images/NOT_ANSI.svg");
+    }
+
+    public boolean calculateOutputValue() throws AmbiguousCurrentException{
+	if (inputCurrent <= Gate.lowerThreshhold)
+	    return true;
+	else if (inputCurrent >= Gate.upperThreshhold)
+	    return false;
+	else throw new AmbiguousCurrentException("Current is between upper and lower threshholds of "
+						 +Gate.upperThreshhold+" and "+Gate.lowerThreshhold);
+    }
+
+    public boolean addInput(LegalCircuitPiece lcp){
+	if (inputs[0]==null){
+	    inputs[0]=lcp;
+	    inputCurrent=lcp.inputCurrent;
+	    outputValue=calculateOutputValue();
+	    return true;
+	}else return false;
+    }
+
+    public boolean connect(LegalCircuitPiece from, LegalCircuitPiece to) 
+	throws BatteryException{
+	boolean success = false;
+	System.out.println(ensureSingleSource());
+	switch(ensureSingleSource()){
+	case 0: {
+	    to.addInput(from);
+	    from.addOutput(to);
+	    success=true;
+	    break;
+	}
+	case 1: break;
+	case 2: throw new BatteryException("More than one battery connected");
+	}
+	return success;
+    }
+
+    public boolean connect(LegalCircuitPiece from){
+	return this.connect(from, this);
+    }
+}
+		     
+	

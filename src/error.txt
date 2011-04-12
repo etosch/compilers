@@ -1,0 +1,1 @@
+Cannot find ../Images/NOT_ANSI.svg in /home/emma/dev/java/compilers/src/.
